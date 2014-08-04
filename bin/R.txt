@@ -287,10 +287,11 @@ int drawable g22 0x7f02005b
 int drawable g33 0x7f02005c
 int drawable g44 0x7f02005d
 int drawable ic_launcher 0x7f02005e
-int drawable patt 0x7f02005f
-int drawable patt_repeating 0x7f020060
-int drawable picture1 0x7f020061
-int drawable seekbar 0x7f020062
+int drawable ok 0x7f02005f
+int drawable patt 0x7f020060
+int drawable patt_repeating 0x7f020061
+int drawable picture1 0x7f020062
+int drawable seekbar 0x7f020063
 int id action_bar 0x7f05001c
 int id action_bar_activity_content 0x7f050015
 int id action_bar_container 0x7f05001b
