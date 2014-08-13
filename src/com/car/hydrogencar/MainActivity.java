@@ -6,7 +6,8 @@ import java.net.DatagramSocket;
 import java.net.InetSocketAddress;
 import java.net.SocketException;
 
-//import us.costan.chrome.ChromeView;
+import us.costan.chrome.ChromeView;
+
 
 import com.car.hydrogencar.JoystickMovedListener;
 import com.car.hydrogencar.JoystickView;
@@ -82,6 +83,7 @@ public class MainActivity extends Activity implements OnTouchListener {
     	//StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
     	//StrictMode.setThreadPolicy(policy); 
         super.onCreate(savedInstanceState);
+        ChromeView.initialize(this);
         // Set main.XML as the layout for this Activity
 		main();      
     }
@@ -187,10 +189,10 @@ public class MainActivity extends Activity implements OnTouchListener {
         Toast.makeText(this, arduino +", "+ camera , Toast.LENGTH_SHORT).show();
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        final WebView webView = (WebView) findViewById(R.id.wv);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl("http://gnfos.com/jp/src/1394443664254.gif");
-        webView.setVisibility(View.INVISIBLE);
+        final ChromeView wv = (ChromeView) findViewById(R.id.wv);
+        wv.getSettings().setJavaScriptEnabled(true);
+        wv.loadUrl("http://"+camera+"/fullscreen.html");
+        wv.setVisibility(View.INVISIBLE);
          
 
         im1 = (ImageView) findViewById(R.id.im1);
@@ -322,7 +324,7 @@ public class MainActivity extends Activity implements OnTouchListener {
 				counter1=counter1+1;
 				// TODO Auto-generated method stub
 				if(counter1 == 1){	
-				webView.setVisibility(View.VISIBLE);
+				wv.setVisibility(View.VISIBLE);
 				button.clearAnimation();
 				button.setAlpha((float) 0.2);
 				joystick1.setAlpha((float) 0.8);
@@ -331,7 +333,7 @@ public class MainActivity extends Activity implements OnTouchListener {
 				im2.setVisibility(View.INVISIBLE);
 				;}
 				if(counter1 == 2){
-					webView.setVisibility(View.INVISIBLE);
+					wv.setVisibility(View.INVISIBLE);
 					button.startAnimation(mAnimation);
 					button.setAlpha((float) 1);
 					joystick1.setAlpha((float) 1);
@@ -381,6 +383,7 @@ public class MainActivity extends Activity implements OnTouchListener {
 		                }
 		}}).start();
         
+		
 		joystick1.setOnJostickMovedListener(new JoystickMovedListener() {
 	        @Override
 				public void OnReturnedToCenter() {
