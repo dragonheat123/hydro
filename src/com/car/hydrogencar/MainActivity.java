@@ -80,16 +80,16 @@ public class MainActivity extends Activity implements OnTouchListener {
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
+    	//StrictMode is for testing...
     	//StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
     	//StrictMode.setThreadPolicy(policy); 
         super.onCreate(savedInstanceState);
         ChromeView.initialize(this);
-        // Set main.XML as the layout for this Activity
-		main();      
+		main();      //call main function
     }
 
     
-	@Override
+	@Override //Viewflipper
 	 public boolean onTouch(View arg0, MotionEvent arg1) {
 
         // Get the action that was done on this touch event
@@ -152,7 +152,7 @@ public class MainActivity extends Activity implements OnTouchListener {
 		}
     }
 	
-	
+	//Function to create socket for connection
 	private void connectSocket(String ip){
         InetSocketAddress mAddr =  new InetSocketAddress(ip ,8080);
     	try {mSocket = new DatagramSocket();}
@@ -167,6 +167,8 @@ public class MainActivity extends Activity implements OnTouchListener {
     		mToast.show();
     		}
     	}
+	
+	//Function to send data
 	private void sendData(byte[] byteData){
 		if(mSocket == null) return;
 		DatagramPacket dPacket = new DatagramPacket(byteData, byteData.length);
@@ -179,6 +181,8 @@ public class MainActivity extends Activity implements OnTouchListener {
 		}
 	}
 	
+	
+	//Main function
 	private void main() {
 		
         setContentView(R.layout.activity_main);
@@ -189,6 +193,7 @@ public class MainActivity extends Activity implements OnTouchListener {
         Toast.makeText(this, arduino +", "+ camera , Toast.LENGTH_SHORT).show();
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        //final WebView wv = (WebView) findViewById(R.id.wv);
         final ChromeView wv = (ChromeView) findViewById(R.id.wv);
         wv.getSettings().setJavaScriptEnabled(true);
         wv.loadUrl("http://"+camera+"/fullscreen.html");
@@ -345,6 +350,7 @@ public class MainActivity extends Activity implements OnTouchListener {
 			}
         });
 		
+        //Creating socket on a new thread
 		final Thread connect;
 		connect = new Thread(){
 		public void run(){
@@ -352,10 +358,9 @@ public class MainActivity extends Activity implements OnTouchListener {
 		}};
 		connect.setPriority(Thread.MAX_PRIORITY);
 		connect.start();
-		
+		//Listening to data from arduino on a background thread
 		new Thread(new Runnable() {
 		     public void run() {
-
 		       while(true){
 		    	try {
 					sock = new DatagramSocket(8081);
@@ -374,7 +379,6 @@ public class MainActivity extends Activity implements OnTouchListener {
 		        text = new String(message, 0, p.getLength());
 		        text = text.substring(1, 3);
 		        runOnUiThread(new Runnable() {
-
 		        @Override
 		        public void run() {
 		          speedometer1.setText(text);

@@ -16,12 +16,16 @@
             android:background="@drawable/patt_repeating">
             
             
-           		<us.costan.chrome.ChromeView
+         <!--  <WebView
 		    android:id="@+id/wv"
 		    android:layout_width="match_parent"
 		    android:layout_height="match_parent" >
-		</us.costan.chrome.ChromeView> 
- 
+		</WebView>-->
+ 		<us.costan.chrome.ChromeView
+		    android:id="@+id/wv"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content" >
+		</us.costan.chrome.ChromeView>
             
            	<ImageView
 		    android:id="@+id/im1"
@@ -29,52 +33,64 @@
 		    android:layout_height="10dp"
 		    android:layout_gravity="center|right"
 		    android:src="@drawable/arrow" />
-	
-  		
+           	
+           	<LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="180dp"
+            android:layout_height="35dp"
+            android:layout_marginBottom="30dp"
+            android:layout_gravity="bottom|center">      	
+
   		<Button
 		    android:id="@+id/g1"
-	
-		    android:layout_gravity="bottom|left"
-		    android:layout_marginLeft="240dp"
 		    android:layout_width="35dp"
 		    android:layout_height="35dp"
-		    android:layout_marginBottom="30dp"
 		    android:background="@drawable/g11"
+		    android:layout_gravity="left"
 		    />
+  		
+  		<View
+ 		 android:layout_width="1dp"
+  		android:layout_height="match_parent"
+  		android:layout_weight="1">
+		</View>
   		
   		
   		  		<Button
 		    android:id="@+id/g2"
-	
-		    android:layout_gravity="bottom|left"
-		    android:layout_marginLeft="282dp"
 		    android:layout_width="35dp"
 		    android:layout_height="35dp"
-		    android:layout_marginBottom="30dp"
 		    android:background="@drawable/g22"
 		    />
   		  		
-  		  		  		  		<Button
+  		  <View
+ 		 android:layout_width="1dp"
+  		android:layout_height="match_parent"
+  		android:layout_weight="1">
+		</View>
+  		  		
+  		  	<Button
 		    android:id="@+id/g3"
-	
-		    android:layout_gravity="bottom|right"
-		    android:layout_marginRight="282dp"
 		    android:layout_width="35dp"
 		    android:layout_height="35dp"
-		    android:layout_marginBottom="30dp"
 		    android:background="@drawable/g33"
 		    />
+  		  	
+  		  	<View
+  android:layout_width="1dp"
+  android:layout_height="match_parent"
+  android:layout_weight="1">
+</View>
 
 		  		<Button
 		    android:id="@+id/g4"
-		    android:layout_gravity="bottom|right"
+		    android:layout_gravity="right"
 		    android:layout_width="35dp"
 		    android:layout_height="35dp"
 		    android:background="@drawable/g44"
-		    android:layout_marginBottom="30dp"
-		    android:layout_marginRight="240dp"
+	
 		     />
-		  		
+		  	</LinearLayout>	
 
 
 
@@ -113,31 +129,46 @@
 		    android:layout_height="50dp"
 		    android:layout_gravity="center"
 		    android:background="@drawable/camera" />
+	
+		           	<LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_gravity="top|center">  
+            
+		    <TextView
+		    android:id="@+id/speedometer1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:textColor="#838383"
+		 android:textSize="50sp"
+		
+		     android:layout_gravity="center"
+		    android:textStyle="bold"
+		    />
+		    
+		      		  	<View
+  android:layout_width="1dp"
+  android:layout_height="match_parent"
+  android:layout_weight="1">
+</View>
 
 		<TextView
 		    android:id="@+id/speedometer"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:textColor="#838383"
-		    android:layout_marginTop="20dp"
-		    android:layout_marginRight="275dp"
+		    android:layout_gravity="center|right"
 		 android:textSize="20sp"
 		    android:text="m/s"
-		     android:layout_gravity="top|right"
 		    android:textStyle="italic"
 		    />
-
-		<TextView
-		    android:id="@+id/speedometer1"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:textColor="#838383"
-		 android:textSize="50sp"
-		    android:layout_marginLeft="270dp"
-		     android:layout_gravity="top|left"
-		    android:textStyle="bold"
-		    />
 		
+
+
+
+		</LinearLayout>
+	
 			<TextView
 		    android:id="@+id/temp"
 		    android:layout_width="wrap_content"
@@ -200,8 +231,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center|top" />
-
-
 
         </FrameLayout>
 
