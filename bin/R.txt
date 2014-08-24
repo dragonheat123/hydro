@@ -364,8 +364,8 @@ int id shortcut 0x7f07002e
 int id showCustom 0x7f070007
 int id showHome 0x7f070004
 int id showTitle 0x7f070006
-int id speedometer 0x7f070049
-int id speedometer1 0x7f07004a
+int id speedometer 0x7f07004a
+int id speedometer1 0x7f070049
 int id split_action_bar 0x7f07001e
 int id submit_area 0x7f070039
 int id tabMode 0x7f070002
