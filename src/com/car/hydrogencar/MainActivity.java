@@ -396,7 +396,7 @@ public class MainActivity extends Activity implements OnTouchListener {
 	        		public void run(){
 	        		try{
 	        		
-	        		mBytes[0] = (byte) (127);
+	        		mBytes[0] = (byte) (127); 
 	 				mBytes[1] = (byte) (127);	
 	 				mBytes[4] = (byte) (1);
 	 				sendData(mBytes);
@@ -424,8 +424,8 @@ public class MainActivity extends Activity implements OnTouchListener {
 						public void run(){
 					try{
 						
-						mBytes[0] = (byte) (pan * 30 + 127);
-						mBytes[1] = (byte) ((tilt * 30 * speed)/127 + 127);
+						mBytes[0] = (byte) (pan * 30 + 127); //leftright
+						mBytes[1] = (byte) ((tilt * 30 * speed)/127 + 127); //speed
 						mBytes[4] = (byte) (1);	
 						//connectSocket(arduino);
 						sendData(mBytes);
@@ -476,7 +476,7 @@ public class MainActivity extends Activity implements OnTouchListener {
     				try{
     					
     					mBytes[2] = (byte) (pan * 30 + 127);
-    					mBytes[3] = (byte) ((tilt * 30 * + 127));
+    					mBytes[3] = (byte) (tilt * 30 + 127);
     					mBytes[4] = (byte) (1);	
     					//connectSocket(arduino);
     					sendData(mBytes);
@@ -499,6 +499,7 @@ public class MainActivity extends Activity implements OnTouchListener {
 
 		ardui = (EditText)findViewById(R.id.arduino);
 		cam = (EditText)findViewById(R.id.camera);
+		
 		ardui.addTextChangedListener(new TextWatcher(){
 
 			@Override

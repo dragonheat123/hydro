@@ -231,7 +231,7 @@
         android:layout_gravity="center|top" />
 
         </FrameLayout>
-
+<!--second page -->
         <LinearLayout
                android:orientation="vertical"
             android:layout_width="match_parent"
