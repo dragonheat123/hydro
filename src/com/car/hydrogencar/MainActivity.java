@@ -35,6 +35,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,6 +52,8 @@ public class MainActivity extends Activity implements OnTouchListener {
 		private TextView tv3;
 		private TextView speedometer1;
 		private Button button;
+		private ProgressBar pb1;
+		private ProgressBar pb2;
 		public int speed;
 		private Button ok;
 		private Button g1;
@@ -68,6 +71,7 @@ public class MainActivity extends Activity implements OnTouchListener {
 		public String camera = "192.168.0.103";
 		public byte[] buf = new byte[4];
 		public String text = "00";
+		public String state = "3";
 		private DatagramSocket sock;
 		private int counter = 0;
 		public int counter1 = 0; 
@@ -198,7 +202,8 @@ public class MainActivity extends Activity implements OnTouchListener {
         wv.getSettings().setJavaScriptEnabled(true);
         wv.loadUrl("http://"+camera+"/fullscreen.html");
         wv.setVisibility(View.INVISIBLE);
-         
+         pb1 = (ProgressBar) findViewById(R.id.progressBar1);
+         pb2 = (ProgressBar) findViewById(R.id.progressBar2);
 
         im1 = (ImageView) findViewById(R.id.im1);
         im2 = (ImageView) findViewById(R.id.im2);
@@ -375,15 +380,32 @@ public class MainActivity extends Activity implements OnTouchListener {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-		        
 		        text = new String(message, 0, p.getLength());
+		        state = new String(message,0,p.getLength());
+		        state = state.substring(0,1);
 		        text = text.substring(1, 3);
+		         if (state == "3"){
+		          	  pb1.setVisibility(View.VISIBLE);  
+		          	  pb2.setVisibility(View.VISIBLE);  
+		            };
+		            if (state == "2"){
+		          	  pb1.setVisibility(View.INVISIBLE);  
+		          	  pb2.setVisibility(View.VISIBLE);  
+		            };
+		            if (state == "1"){
+		          	  pb1.setVisibility(View.VISIBLE);  
+		          	  pb2.setVisibility(View.INVISIBLE);  
+		            };
 		        runOnUiThread(new Runnable() {
 		        @Override
 		        public void run() {
-		          speedometer1.setText(text);
+		          speedometer1.setText(state);
 		        }
-		    });
+		      
+		        
+		    }
+		        
+		        		);
 		                }
 		}}).start();
         
